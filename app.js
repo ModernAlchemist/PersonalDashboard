@@ -60,22 +60,22 @@ app.post('/add_category', function(request, response) {
     
   let newCatId = Math.floor(Math.random()*1000000000);
 
-  console.log("New ID: "+ newCatId);
-  console.log("Received request to sort"); 
-  console.log(request.body);
-  console.log(parseInt(request.body.userId));
+  let todayDate = new Date();
+  let timeNowMinutes = (todayDate).getMinutes();
+  let timeNowHours = (todayDate).getHours();
+  let dateNow = (todayDate.getMonth()+1) + '/'+ (todayDate.getDate()) +'/'+ (todayDate.getYear()-100+2000);
   
   
   db.serialize(function(){
     db.all('SELECT * FROM CATEGORY where USER_ID='+request.body.userId+' and CAT_NAME="'+
-                request.body.categoryName+'"', function(err, row){
+                request.body.categoryName+'" and CAT_DATE="'+request.body.date+'"', function(err, row){
                 
 		if(row.length > 0){
             
             response.send('duplicate');
         }else{
             db.run('INSERT INTO CATEGORY VALUES ("'+parseInt(request.body.userId)+'", "'+newCatId+'", "'
-                    +request.body.categoryName+'","'+request.body.selectedHouse+'","0")',function(err){
+                    +request.body.categoryName+'","'+request.body.selectedHouse+'","0","0","0","'+dateNow+'")',function(err){
                 if(err)
                 {
                     console.log("Error. ");
@@ -94,8 +94,10 @@ app.post('/add_category', function(request, response) {
 
 app.post('/fetch_categories',function(request,response){
 
-    db.all('SELECT * FROM CATEGORY C,HOUSE H where USER_ID='+request.body.userId+' and C.CAT_HOUSE=H.HOUSE_ID', function(err, row){
+    db.all('SELECT * FROM CATEGORY C, HOUSE H where C.USER_ID='+request.body.userId+ ' and C.CAT_DATE="'+ request.body.date+'" and '+
+    'C.HOUSE_NAME=H.HOUSE_NAME', function(err, row){
                 
+     console.log(request.body);
 		if(row && row.length > 0){
             response.send(row);
         }else{
@@ -140,7 +142,7 @@ app.get('/fetch_houses', function(request,response){
 
 app.post('/fetch_theme', function(request,response){
     db.all('SELECT H.HOUSE_CSS,H.HOUSE_MOTTO FROM HOUSE H, CATEGORY C WHERE C.CAT_NAME="'+request.body.categoryName+'" AND '+
-        'C.USER_ID='+request.body.userId+' AND C.CAT_HOUSE=H.HOUSE_ID', function(err, row){      
+        'C.USER_ID='+request.body.userId+' AND C.HOUSE_NAME=H.HOUSE_NAME', function(err, row){      
 		if(row && row.length > 0){
             console.log(row);
             response.send(row);

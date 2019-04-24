@@ -59,6 +59,8 @@ function addCategory(){
     categoryName = document.getElementById('catName').value;
     console.log(categoryName);
     
+    
+    
     if(selectedHouse == null && categoryName == ''){
         alert("Enter category name and select a color.");
     }else if(categoryName == ''){
@@ -72,7 +74,7 @@ function addCategory(){
             data:   {
                 userId: userId,
                 selectedHouse: selectedHouse,
-                categoryName: categoryName.toLowerCase()
+                categoryName: categoryName.toLowerCase(),
             },
             success: function(data) { 
                 console.log("success");
@@ -94,11 +96,18 @@ function addCategory(){
 }
 
 function loadCategories(){
+
+    let todayDate = new Date();
+    let timeNowMinutes = (todayDate).getMinutes();
+    let timeNowHours = (todayDate).getHours();
+    let dateNow = (todayDate.getMonth()+1) + '/'+ (todayDate.getDate()) +'/'+ (todayDate.getYear()-100+2000);
+    
     $.ajax({
             url: "/fetch_categories",
             type: "POST",
             data:   {
-                userId: userId
+                userId: userId,
+                date: dateNow
             },
             success: function(data) { 
                 console.log("success");
