@@ -1,0 +1,160 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/index.css"></link>
+    <link rel="stylesheet" href="./css/today_overview.css"></link>
+    <link rel="stylesheet" href="./css/modal.css"></link>
+    <link rel="stylesheet" href="./css/sidebar.css"></link>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
+    <script src="./js/loading-bar.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Cinzel|Montserrat" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar navbar-dark ">
+        <button class="navbar-toggler collapseMenu" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+        
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">Levels</a>
+        <a href="#" class="addCat" onclick="openModal()">Add Category</a>
+        <a href="/monthly_overview">Monthly Overview</a>
+        <a href="#">Logout</a>
+    </div>
+
+    <div id="main">
+    <header class="todayHeader">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-3 text-left">
+                    <div class="bannerLeft"></div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <h1 class="titleToday">Today</h1>
+                    <p>"What Is Dead May Never Die"</p>
+                </div>
+                <div class="col-md-3 text-right">
+                    <div class="bannerRight"></div>
+                </div>
+                <div class="col-md-1">
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="modal-content">
+            <div class="modal-header">  
+                <h2>Add Category</h2>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row modalRow">
+                        <div class="col-md">
+                            <h5>Name of Category</h5>
+                            <input type="text" class="form-control" placeholder="Task Name" id='catName'></input>
+                        </div>
+                    </div>
+                    <h5>Select House</h5>
+                    <div class="row modalRow houseDiv">
+                        <div class="col-md">
+                            <div class="houseColor1">
+                                <div class="house1"></div>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="houseColor2">
+                                <div class="house2"></div>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="houseColor3">
+                                <div class="house3"></div>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="houseColor4">
+                                <div class="house4"></div>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="houseColor5">
+                                <div class="house5"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row modalRow houseDiv">
+                        <div class="col-md">
+                            <div class="houseColor6">
+                                <div class="house6"></div>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="houseColor7">
+                                <div class="house7"></div>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="houseColor8">
+                                <div class="house8"></div>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="houseColor9">
+                                <div class="house9"></div>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="houseColor10">
+                                <div class="house10"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5"></div>
+                        <div class="col-md-2">
+                            <div class="addBtn" onclick="addCategory()"><h5>Add</h5></div>
+                        </div>
+                        <div class="col-md-5"></div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <section>
+        <div class="container progressBarContainer">
+        <div class="row row1">
+            <div class="col-md cat1">
+            </div>
+            <div class="col-md cat2">         
+            </div>
+            <div class="col-md cat3">
+            </div>
+            <div class="col-md cat4">
+            </div>
+        </div>
+        <div class="row row2">
+            <div class="col-md cat5">
+            </div>
+            <div class="col-md cat6">
+            </div>
+            <div class="col-md cat7">
+            </div>
+            <div class="col-md cat8">
+            </div>
+        </div>
+    </div>
+    </section>
+</div>
+</body>
+<script src="today.js"></script>
+</html>

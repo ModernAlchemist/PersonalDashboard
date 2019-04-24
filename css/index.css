@@ -1,0 +1,45 @@
+body {
+    background-color: #FF5A5F;
+}
+header {
+    font-family: sans-serif;
+    text-align: center;
+    color: #F5F5F5;
+    background-color: rgba(255, 90, 95,0.9);
+    height: 6em;
+    vertical-align: center;
+    padding-top: 0;
+    margin-bottom: 2em;
+    
+}
+header i {
+    font-size: 3em;
+}
+.logout {
+    text-align: right;
+}
+a {
+    text-decoration: none;
+    color: #F5F5F5;
+}
+a:hover {
+    text-decoration: none;
+    color: #3c3c3c;
+}
+h1 {
+    font-family: 'Cinzel';
+}
+p {
+    font-family: 'Cinzel';
+    font-style: italic;
+}
+#mySideNav {
+    font-family: 'Cinzel';
+}
+
+.collapseMenu {
+    position: fixed;
+    top: 1%;
+    left: 1%;
+    z-index: 1;
+}

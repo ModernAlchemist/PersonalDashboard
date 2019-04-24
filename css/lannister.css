@@ -1,0 +1,50 @@
+.taskHeader {
+    background-color: rgb(147,4,22);
+    border-top: solid 0.7em rgb(55,0,3);
+    border-bottom: solid 0.7em rgb(55,0,3);
+}
+.bannerLeft {
+    background: url('../img/lannister_left.png');
+    width: 60%;
+    height: 8em;
+    background-size: cover;
+    background-position: center center;
+    z-index: 1;
+}
+.bannerRight {
+    background: url('../img/lannister_right.png');
+    width: 60%;
+    height: 8em;
+    background-size: cover;
+    background-position: center center;
+    z-index: 1;
+}
+.continuousTitle , .todayTitle {
+    color: rgb(147,4,22);
+    background-color: rgb(234,182,77);
+}
+
+.taskBtn {
+    border-color: rgb(234,182,77);
+    color: rgb(234,182,77);
+}
+.taskNameCol {
+    color: #f5f5f5;
+    border-bottom: solid 2px #f5f5f5 ;
+    border: solid 2px #f5f5f5 ;
+}
+.taskBtn:hover {
+    background-color: rgb(234,182,77);
+    color: rgb(252, 252, 252);
+}
+
+.continuousBody, .todayBody, .tomorrowBody {
+    background-color: rgba(55,0,3, 0.7);
+}
+
+.taskCol {
+    color: #f5f5f5;
+}
+.taskCol:hover, a:hover  {
+    color: rgb(234,182,77);
+}

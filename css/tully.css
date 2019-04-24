@@ -1,0 +1,34 @@
+.taskHeader {
+    background-color: rgb(20, 37, 94);
+    border-top: solid 0.7em rgb(193, 74, 39  );
+    border-bottom: solid 0.7em rgb(193, 74, 39  );
+}
+.bannerLeft, .bannerRight {
+    background: url('../img/tully_2.png');
+    width: 80%;
+    height: 8em;
+    background-size: cover;
+    background-position: center center;
+    z-index: 1;
+}
+.continuousTitle , .todayTitle {
+    color: #fcfcfc;
+    background-color: rgba(193, 74, 39,1);
+}
+
+.taskBtn {
+    border-color: rgb(193, 74, 39  );
+    color: rgb(193, 74, 39  );
+}
+.taskNameCol {
+    color: rgb(20, 37, 94  );
+    border-bottom: solid 2px rgb(20, 37, 94  ) ;
+    border: solid 2px rgb(20, 37, 94  ) ;
+}
+.taskBtn:hover {
+    background-color: rgb(193, 74, 39 );
+    color: rgb(252, 252, 252);
+}
+.continuousBody, .todayBody, .tomorrowBody {
+    background-color: rgba(252, 252, 252, 0.6);
+}

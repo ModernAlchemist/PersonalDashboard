@@ -1,0 +1,55 @@
+.continuousTitle , .todayTitle {
+    text-align: center;
+    border-top-left-radius: .3em;
+    border-top-right-radius: .3em;
+    font-family: 'Cinzel';
+    padding-top: 0.3em;
+}
+.continuousBody, .todayBody, .tomorrowBody {
+    height: 13em;
+    color: black;
+    margin-bottom: 1em;
+    border-bottom-left-radius: 0.3em;
+    border-bottom-right-radius: 0.3em;
+    overflow-y: scroll;
+    font-family: 'Montserrat';
+}
+.continuousBody {
+    height: 30em
+}
+
+.completeBtn {
+    height: 2em;
+    width: 9.353em;
+}
+
+.taskHeader {
+    height: 9em;
+}
+
+.categoryNameTitle {
+    padding-top: 0.7em;
+}
+
+
+.taskRow {
+    padding-top: 0.6em;
+    padding-bottom: 0.2em;
+}
+
+.taskRow>div>h5 {
+    margin-top: 0.3em;
+}
+
+section {
+    float: left;
+    margin-left: 1em;
+    margin-right: 2em;
+    width: 45%;
+}
+aside {
+    float: right;
+    margin-left: 1em;
+    margin-right: 2em;
+    width: 45%;
+}
