@@ -273,7 +273,33 @@ app.post('/uncomplete_task', function(request, response){
         response.send('uncomplete');
     });
 });
-  
+ 
+app.post('/fetch_month_progress',function(request, response){
+    db.serialize(function(){
+        console.log('"'+request.body.month+'/%/'+request.body.year+'"');
+        db.all('SELECT C.CAT_NAME, C.CAT_PROGRESS, H.HOUSE_COLOR_1, H.HOUSE_COLOR_2, C.CAT_DATE FROM CATEGORY C, HOUSE H WHERE CAT_DATE LIKE'
+        +'"'+request.body.month+'/%/'+request.body.year+'" and C.HOUSE_NAME=H.HOUSE_NAME',function(err,row){
+            if(row){
+                response.send(row);
+            }else{
+                response.send('Error in fetching month progress.');
+            }
+        });
+    });
+});
+
+app.post('/fetch_num_categories',function(request,response){
+    db.serialize(function(){
+        db.all('SELECT NUM_CATS FROM USER WHERE USER_ID='+request.body.userId,function(err,row){
+           if(row){
+                response.send(row);
+           }else{
+                response.send('Error in fetching number of categories.');
+           }
+        });
+    });
+});
+
 app.listen(8888);
 
 

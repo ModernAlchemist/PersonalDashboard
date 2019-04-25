@@ -43,3 +43,6 @@ p {
     left: 1%;
     z-index: 1;
 }
+.ldBar {
+    color: transparent;
+}

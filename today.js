@@ -74,7 +74,7 @@ function addCategory(){
             data:   {
                 userId: userId,
                 selectedHouse: selectedHouse,
-                categoryName: categoryName.toLowerCase(),
+                categoryName: categoryName.toLowerCase()
             },
             success: function(data) { 
                 console.log("success");

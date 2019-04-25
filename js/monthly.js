@@ -5,6 +5,7 @@ let todayYear = todayDate.getYear();
 let dayOfWeek = todayDate.getDay();
 let todayDay = todayDate.getDate();
 let navMenuOpen = false;
+let userId = 123123123123;
  
 console.log(todayYear);
 
@@ -53,6 +54,9 @@ loadCalendar();
 
 
 function calendarLeft(){
+    for(var i = 0; i < calendarSquares.length; i++){
+        $('.'+calendarSquares[i]+'>.stats').html('');
+    }
     if(todayMonth == 0){
         todayMonth = 11;
     }else{
@@ -66,6 +70,9 @@ function calendarLeft(){
 }
 
 function calendarRight(){
+    for(var i = 0; i < calendarSquares.length; i++){
+        $('.'+calendarSquares[i]+'>.stats').empty();
+    }
     todayMonth = (todayMonth + 1)%12;
     if(todayMonth == 0){
         todayYear++;
@@ -83,6 +90,8 @@ function loadCalendar(){
     titleYear.textContent = todayYear-100 + 2000;
     let calendarDay = 0;
     let startDay = (new Date(todayYear-100 + 2000,todayMonth,1)).getDay();
+    let firstDayOfMonth,
+        lastDayOfMonth;
     console.log();
     console.log(startDay);
 
@@ -100,11 +109,14 @@ function loadCalendar(){
         calendarDay++;
     }
     
+    firstDayOfMonth = calendarDay;
+    
     for(var i=0; i < daysInMonth[todayMonth]; i++){
         let day = document.querySelector('.'+calendarSquares[calendarDay]);
         day.style['background-color'] = 'rgb(60, 60, 60)';
         let dayNum = document.querySelector('.'+calendarSquares[calendarDay] + '>' + '.dayNum');
         dayNum.textContent = (i + 1) + '';
+        lastDayOfMonth = calendarDay;
         calendarDay++;
     }
 
@@ -115,6 +127,53 @@ function loadCalendar(){
         dayNum.textContent = (i - daysInMonth[todayMonth] + 1) + '';
         calendarDay++;
     }
+    
+    
+    $.ajax({
+        url: '/fetch_num_categories',
+        type: 'POST',
+        data: {
+            userId: userId
+        },
+        success: function(data){
+            let numCats = data[0]["NUM_CATS"];
+            
+            $.ajax({
+                url: '/fetch_month_progress',
+                type: 'POST',
+                data: {
+                    month: todayMonth + 1,
+                    userId: userId,
+                    year: todayYear-100 + 2000
+                },
+                success:function(data){
+                    console.log(data);
+                    for(var i = 0; i < data.length; i++){
+                        let dayOfCategory = parseInt(data[i]["CAT_DATE"].split('/')[1]);
+                        console.log(calendarSquares[firstDayOfMonth+dayOfCategory-1]);
+                        $('.'+calendarSquares[firstDayOfMonth+dayOfCategory-1]+'>.stats').append('<div></div>');
+                        $('.'+calendarSquares[firstDayOfMonth+dayOfCategory-1]+'>.stats'+' div:last-child').css('width',data[i]["CAT_PROGRESS"]*100+'%');
+                        $('.'+calendarSquares[firstDayOfMonth+dayOfCategory-1]+'>.stats'+' div:last-child').css('background-color',data[i]["HOUSE_COLOR_1"]);
+                        if(numCats < 4){
+                            $('.'+calendarSquares[firstDayOfMonth+dayOfCategory-1]+'>.stats'+' div:last-child').css('height','1.4em');
+                        }else if(numCats < 6){
+                            $('.'+calendarSquares[firstDayOfMonth+dayOfCategory-1]+'>.stats'+' div:last-child').css('height','1.0em');
+                        }else{
+                            $('.'+calendarSquares[firstDayOfMonth+dayOfCategory-1]+'>.stats'+' div:last-child').css('height','0.7em');
+                        }
+                        
+                    }
+                },
+                error:function(err){
+                    console.log(err);
+                }
+            });
+        },
+        error: function(err){
+            console.log(err);
+        }
+    });
+    
 }
 
 

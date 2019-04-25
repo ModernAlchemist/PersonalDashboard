@@ -26,10 +26,10 @@ body{
 .d7 {
     border-top-right-radius: 0.5em;
 }
-.d29 {
+.d36 {
     border-bottom-left-radius: 0.5em;
 }
-.d35 {
+.d42 {
     border-bottom-right-radius: 0.5em;
 }
 
@@ -67,4 +67,7 @@ body{
 .calendarHeader {
     
     height: 7.5em;
+}
+.stats {
+    border-left: 2px solid black;
 }
